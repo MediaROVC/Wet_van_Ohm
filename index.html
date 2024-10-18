@@ -1,8 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Wet van Ohm calculator</title>
+    <title>De wet van Ohm</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h2 {
+            color: #007BFF;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 22px);
+        }
+        input[type="button"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+        canvas {
+            margin-top: 20px;
+        }
+    </style>
     <script>
         function calculateOhmsLaw() {
             var voltage = parseFloat(document.getElementById("voltage").value);
@@ -51,13 +91,13 @@
     </script>
 </head>
 <body>
-    <h2>Wet van Ohm calculatorr</h2>
+    <h2>De wet van Ohm</h2>
     <form>
         Spanning (V): <input type="text" id="voltage"><br><br>
         Stroom (I): <input type="text" id="current"><br><br>
         Weerstand (R): <input type="text" id="resistance"><br><br>
         <input type="button" value="Bereken" onclick="calculateOhmsLaw()">
     </form>
-    <canvas id="ohmsLawChart" width="400" height="200"></canvas>
+    <canvas id="ohmsLawChart" width="300" height="150"></canvas>
 </body>
 </html>
