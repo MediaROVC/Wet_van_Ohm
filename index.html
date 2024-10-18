@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>De wet van Ohm</title>
+    <title>Ohm's Law Calculator</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -70,9 +70,9 @@
             var chart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['Voltage (V)', 'Current (I)', 'Resistance (R)'],
+                    labels: ['Spanning (V)', 'Stroom (I)', 'Weerstand (R)'],
                     datasets: [{
-                        label: 'Ohm\'s Law',
+                        label: 'Wet van Ohm',
                         data: [voltage, current, resistance],
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 2,
@@ -91,13 +91,13 @@
     </script>
 </head>
 <body>
-    <h2>De wet van Ohm</h2>
+    <h2>Wet van Ohm Calculator</h2>
     <form>
         Spanning (V): <input type="text" id="voltage"><br><br>
         Stroom (I): <input type="text" id="current"><br><br>
         Weerstand (R): <input type="text" id="resistance"><br><br>
         <input type="button" value="Bereken" onclick="calculateOhmsLaw()">
     </form>
-    <canvas id="ohmsLawChart" width="300" height="150"></canvas>
+    <canvas id="ohmsLawChart" width="400" height="200"></canvas>
 </body>
 </html>
