@@ -1,10 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>De wet van Ohm</title>
+    <title>Wet van Ohm calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function calculateOhmsLaw() {
+            var voltage = parseFloat(document.getElementById("voltage").value);
+            var current = parseFloat(document.getElementById("current").value);
+            var resistance = parseFloat(document.getElementById("resistance").value);
+
+            if (!isNaN(voltage) && !isNaN(current)) {
+                resistance = voltage / current;
+                document.getElementById("resistance").value = resistance.toFixed(2);
+            } else if (!isNaN(voltage) && !isNaN(resistance)) {
+                current = voltage / resistance;
+                document.getElementById("current").value = current.toFixed(2);
+            } else if (!isNaN(current) && !isNaN(resistance)) {
+                voltage = current * resistance;
+                document.getElementById("voltage").value = voltage.toFixed(2);
+            } else {
+                alert("Vul ten minste twee waarden in.");
+            }
+
+            updateChart(voltage, current, resistance);
+        }
+
+        function updateChart(voltage, current, resistance) {
+            var ctx = document.getElementById('ohmsLawChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Voltage (V)', 'Current (I)', 'Resistance (R)'],
+                    datasets: [{
+                        label: 'Ohm\'s Law',
+                        data: [voltage, current, resistance],
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
 </head>
 <body>
-    <h1>Welkom op mijn site!!</h1>
-    <p>Deze site wordt gehost met GitHub Pages!!!</p>
+    <h2>Wet van Ohm calculatorr</h2>
+    <form>
+        Spanning (V): <input type="text" id="voltage"><br><br>
+        Stroom (I): <input type="text" id="current"><br><br>
+        Weerstand (R): <input type="text" id="resistance"><br><br>
+        <input type="button" value="Bereken" onclick="calculateOhmsLaw()">
+    </form>
+    <canvas id="ohmsLawChart" width="400" height="200"></canvas>
 </body>
 </html>
