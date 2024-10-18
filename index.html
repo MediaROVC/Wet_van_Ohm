@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ohm's Law Calculator</title>
+    <title>Wet van Ohm Calculator</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -41,6 +41,8 @@
         }
         canvas {
             margin-top: 20px;
+            max-width: 100%;
+            height: auto;
         }
     </style>
     <script>
@@ -84,7 +86,9 @@
                         y: {
                             beginAtZero: true
                         }
-                    }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false
                 }
             });
         }
@@ -98,6 +102,8 @@
         Weerstand (R): <input type="text" id="resistance"><br><br>
         <input type="button" value="Bereken" onclick="calculateOhmsLaw()">
     </form>
-    <canvas id="ohmsLawChart" width="400" height="200"></canvas>
+    <div style="width: 300px; height: 150px; margin: auto;">
+        <canvas id="ohmsLawChart"></canvas>
+    </div>
 </body>
 </html>
